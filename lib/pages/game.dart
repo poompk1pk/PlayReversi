@@ -141,6 +141,9 @@ class _BoardGameState extends State<BoardGame> {
     }
   }
 
+  /**
+   * http://www.cse.uaa.alaska.edu/~afkjm/csce211/handouts/othello.pdf
+   */
   bool validMove(int piece, int x, int y, board) {
 // Check that the coordinates are empty
     if (board[x][y] != 0) return false;
