@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
-      home: const BoardGame(),
+      home: const WelcomePage(),
     );
   }
 }
