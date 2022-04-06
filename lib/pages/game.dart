@@ -170,13 +170,14 @@ class _BoardGameState extends State<BoardGame> {
     return false; // If we get here, we didn't find a valid flip direction
   }
 
-  void switchTurn() {
+  void switchTurn(var from) {
     if (whoTurn == 1) {
       whoTurn = 2;
     } else {
       whoTurn = 1;
     }
-    setState(() {});
+    print('switch from ${whoTurn} turn $from');
+
 
     Future.delayed(const Duration(milliseconds: 500), () {
       AudioCache audioPlayer = AudioCache();
@@ -189,6 +190,10 @@ class _BoardGameState extends State<BoardGame> {
 
     });
     setState(() {});
+
+    if(whoTurn == enemyColor) {
+      botPlay();
+    }
   }
 
   final scoreBoardArray = [
@@ -214,14 +219,9 @@ class _BoardGameState extends State<BoardGame> {
         volume: 1);
     result.then((value) {});
 
-    switchTurn();
+    switchTurn('_move');
 
-    if (whoTurn == enemyColor) {
-      botPlay();
-    }
-    setState(() {
 
-    });
   }
 
   void botPlay() {
@@ -251,7 +251,7 @@ class _BoardGameState extends State<BoardGame> {
 
             int team = enemyColor; //is bot
             for(int lv=0;lv<2;++lv) {
-                print('score lv=$lv count=$count p=$team $i,$j');
+               // print('score lv=$lv count=$count p=$team $i,$j');
               for (int r = 0; r < 8; r++) {
                 for (int c = 0; c < 8; c++) {
                   if (clone[r][c] == team) {
@@ -366,6 +366,7 @@ class _BoardGameState extends State<BoardGame> {
       }
 
       if(!canMove) {
+
         setState(() {});
         return;
       }
@@ -382,6 +383,20 @@ class _BoardGameState extends State<BoardGame> {
     boardArray[3][4] = 2;
     boardArray[4][3] = 2;
     boardArray[4][4] = 1;
+
+  /*  for(int i=0;i<8;++i) {
+      for(int j=0;j<8;++j) {
+        boardArray[i][j] = 1;
+      }
+    }
+    boardArray[0][7] = 0;
+    boardArray[0][6] = 0;
+    boardArray[1][6] = 0;
+    boardArray[1][7] = 0;
+    boardArray[0][7] = 0;
+    boardArray[0][5] = 2;
+    boardArray[1][5] = 2;
+    boardArray[2][7] = 2;*/
   }
 
   Map<String, dynamic> checkGame() {
@@ -416,18 +431,8 @@ class _BoardGameState extends State<BoardGame> {
 
   @override
   Widget build(BuildContext context) {
-    var inmove_legal = legal_moves(whoTurn, boardArray);
-    int canPlace = 0;
-    for (int i = 0; i < 8; ++i) {
-      for (int j = 0; j < 8; j++) {
-        if (inmove_legal[i][j] == whoTurn) {
-          canPlace++;
-        }
-      }
-    }
-    if (canPlace == 0) {
-      switchTurn();
-    }
+
+
     Map<String, dynamic> check = checkGame();
 
     if (check['isEnd']) {
@@ -440,6 +445,19 @@ class _BoardGameState extends State<BoardGame> {
       result.then((value) {
         showEndDialog(context);
       });
+    }
+    var inmove_legal = legal_moves(whoTurn, boardArray);
+    int canPlace = 0;
+    for (int i = 0; i < 8; ++i) {
+      for (int j = 0; j < 8; j++) {
+        if (inmove_legal[i][j] == whoTurn) {
+          canPlace++;
+        }
+      }
+    }
+    if (canPlace == 0 && !check['isEnd']) {
+      switchTurn('can place == 0');
+
     }
     return Scaffold(
         appBar: AppBar(
@@ -624,10 +642,10 @@ class _BoardGameState extends State<BoardGame> {
                       ? (inmove_legal[i][j] != yourColor)
                           ? null
                           : () {
-                    print(MediaQuery.of(context).size.height);
-                    print(MediaQuery.of(context).size.width);
-                    print((MediaQuery.of(context).size.height<=MediaQuery.of(context).size.width?(MediaQuery.of(context).size.height/9.5)-30:(MediaQuery.of(context).size.width/9.5)-30),
-                    );
+                 //   print(MediaQuery.of(context).size.height);
+                  //  print(MediaQuery.of(context).size.width);
+                  //  print((MediaQuery.of(context).size.height<=MediaQuery.of(context).size.width?(MediaQuery.of(context).size.height/9.5)-30:(MediaQuery.of(context).size.width/9.5)-30),
+
                               if (yourColor == -1) {
                                 return;
                               }
@@ -682,7 +700,7 @@ class _BoardGameState extends State<BoardGame> {
               children: [
                 Text(
                   (check['Black'] > check['White']
-                      ? 'Black Won'
+                      ? '${yourColor==1?'You':'Bot'} Won'
                       : (check['Black'] == check['White']
                       ? 'Draw Game'
                       : 'White Won')),
@@ -696,7 +714,7 @@ class _BoardGameState extends State<BoardGame> {
                       fontWeight: FontWeight.bold),
                 ),
               ]),
-          Text('${check['Black']} : ${check['White']}',
+          Text('${check[yourColor==1?'Black':'White']} : ${check[enemyColor==1?'Black':'White']}',
             style: TextStyle(
                 color: (check['Black'] > check['White']
                     ? Colors.white
