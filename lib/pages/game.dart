@@ -703,7 +703,7 @@ class _BoardGameState extends State<BoardGame> {
                       ? '${yourColor==1?'You':'Bot'} Won'
                       : (check['Black'] == check['White']
                       ? 'Draw Game'
-                      : 'White Won')),
+                      : '${yourColor==2?'You':'Bot'} Won')),
                   style: TextStyle(
                       color: (check['Black'] > check['White']
                           ? Colors.white

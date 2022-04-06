@@ -51322,7 +51322,8 @@ s=(s==null?r==null:s===r)?l.z:l.y}s=A.dw(i,A.hF(i,s,50,new A.Y_(),i),i,i,i,i,i,i
 if(h.h(0,k)>h.h(0,j))r=(l.e===1?"You":"Bot")+" Won"
 else{r=h.h(0,k)
 q=h.h(0,j)
-r=(r==null?q==null:r===q)?"Draw Game":"White Won"}if(h.h(0,k)>h.h(0,j))q=B.i
+if(r==null?q==null:r===q)r="Draw Game"
+else r=(l.e===2?"You":"Bot")+" Won"}if(h.h(0,k)>h.h(0,j))q=B.i
 else{q=h.h(0,k)
 p=h.h(0,j)
 q=(q==null?p==null:q===p)?B.pH:B.i}p=t.p
