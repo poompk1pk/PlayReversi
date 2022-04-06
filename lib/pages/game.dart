@@ -219,6 +219,9 @@ class _BoardGameState extends State<BoardGame> {
     if (whoTurn == enemyColor) {
       botPlay();
     }
+    setState(() {
+
+    });
   }
 
   void botPlay() {
@@ -367,6 +370,7 @@ class _BoardGameState extends State<BoardGame> {
         return;
       }
       _move(root.x, root.y);
+
     });
   }
 
