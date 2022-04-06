@@ -355,16 +355,12 @@ class _BoardGameState extends State<BoardGame> {
           root.x = v.x;
           root.y = v.y;
         }
-        print('---------------------------');
-        print('score at ${v.x},${v.y} = ${v.score}');
-        for(LinkingValue innerV in v.next.values) {
-          print('inner_score=${innerV.score} at ${innerV.x},${innerV.y}');
-        }
-        print('---------------------------');
+
         canMove = true;
       }
-      print('bot _move = ${root.x}, ${root.y} score=${root.score}');
+
       if(!canMove) {
+        setState(() {});
         return;
       }
       _move(root.x, root.y);
