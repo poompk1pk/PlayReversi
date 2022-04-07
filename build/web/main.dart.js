@@ -16285,12 +16285,13 @@ uM:function uM(a,b,c,d,e,f,g,h){var _=this
 _.d=a
 _.f=_.e=-1
 _.r=1
-_.x=b
-_.y=c
-_.z=d
-_.Q=e
-_.ch=f
-_.cx=g
+_.x=!1
+_.y=b
+_.z=c
+_.Q=d
+_.ch=e
+_.cx=f
+_.cy=g
 _.a=null
 _.b=h
 _.c=null},
@@ -51172,9 +51173,6 @@ aG(){return A.akp()}}
 A.uM.prototype={
 bH(){var s=this,r=s.c
 r.toString
-A.lN(s.x.c,r)
-r=s.c
-r.toString
 A.lN(s.y.c,r)
 r=s.c
 r.toString
@@ -51185,6 +51183,9 @@ A.lN(s.Q.c,r)
 r=s.c
 r.toString
 A.lN(s.ch.c,r)
+r=s.c
+r.toString
+A.lN(s.cx.c,r)
 s.dg()},
 wo(a){var s,r,q,p
 for(s=this.d,r=0,q=0;q<8;++q)for(p=0;p<8;++p)if(s[q][p]===a)++r
@@ -51270,17 +51271,17 @@ n=A.aS(255,76,175,250)
 m=t.p
 l=A.a([],m)
 if(g.e!==-1){k=g.r
-j=k===2?g.y:g.x
+j=k===2?g.z:g.y
 j=A.hF(f,j,30,new A.XU(),f)
 k=k===1
 i=k?"Black Turn":"White Turn"
 l.push(new A.eE(B.jD,f,f,new A.cS(B.S,A.mh(A.a([j,A.i9(i,A.e3(f,f,k?B.l:B.i,f,f,f,f,f,f,f,f,26,f,B.aa,f,f,!0,f,f,f,f,f,f,f,f),f,f)],m),B.a0,B.c3,B.a4),f),f))}k=g.e
 if(k!==-1){k=A.i9("You   "+g.wo(k)+" ",A.e3(f,f,B.i,f,f,f,f,f,f,f,f,30,f,B.aa,f,f,!0,f,f,f,f,f,f,f,f),f,f)
-j=g.e===1?g.x:g.y
+j=g.e===1?g.y:g.z
 j=A.hF(f,j,10,new A.XV(),f)
 i=A.i9("  VS ",A.e3(f,f,B.i,f,f,f,f,f,f,f,f,30,f,B.aa,f,f,!0,f,f,f,f,f,f,f,f),f,f)
 h=g.f
-l.push(new A.cS(B.kh,A.tE(A.a([k,j,i,A.hF(f,h===1?g.x:g.y,10,f,f),A.i9(" "+g.wo(h)+"   Bot",A.e3(f,f,B.i,f,f,f,f,f,f,f,f,30,f,B.aa,f,f,!0,f,f,f,f,f,f,f,f),f,f)],m),B.a0,B.an,B.a4),f))}if(g.e===-1)l.push(new A.cS(B.kh,A.tE(A.a([A.i9("Choose your color:",A.e3(f,f,B.i,f,f,f,f,f,f,f,f,20,f,f,f,f,!0,f,f,f,f,f,f,f,f),f,f),A.hF(f,g.x,50,new A.XW(g),f),A.hF(f,g.y,50,new A.XX(g),f)],m),B.a0,B.an,B.a4),f))
+l.push(new A.cS(B.kh,A.tE(A.a([k,j,i,A.hF(f,h===1?g.y:g.z,10,f,f),A.i9(" "+g.wo(h)+"   Bot",A.e3(f,f,B.i,f,f,f,f,f,f,f,f,30,f,B.aa,f,f,!0,f,f,f,f,f,f,f,f),f,f)],m),B.a0,B.an,B.a4),f))}if(g.e===-1)l.push(new A.cS(B.kh,A.tE(A.a([A.i9("Choose your color:",A.e3(f,f,B.i,f,f,f,f,f,f,f,f,20,f,f,f,f,!0,f,f,f,f,f,f,f,f),f,f),A.hF(f,g.y,50,new A.XW(g),f),A.hF(f,g.z,50,new A.XX(g),f)],m),B.a0,B.an,B.a4),f))
 k=A.a([],m)
 for(p=0;p<8;++p)k.push(g.T3(p))
 l.push(A.dw(f,A.mh(k,B.a0,B.an,B.a4),f,f,f,f,B.S,f))
@@ -51292,7 +51293,7 @@ VR(){var s=this.c
 s.toString
 A.a47(s,A.AC(new A.XY(),null,t.z))},
 T3(a){var s,r,q,p,o,n,m,l,k,j,i,h,g=this,f=null,e=g.d,d=g.m7(g.e,e),c=g.tP(),b=A.a([],t.p)
-for(s=t.w,r=g.x,q=g.y,p=g.ch,o=g.Q,n=0;n<8;++n){m=g.r
+for(s=t.w,r=g.y,q=g.z,p=g.cx,o=g.ch,n=0;n<8;++n){m=g.r
 l=g.e
 if(m===l)if(d[a][n]===l)m=o
 else{m=e[a][n]
@@ -51314,39 +51315,42 @@ i=g.c
 k=k.a.b<=j.a.a?i.R(s).f.a.b/8-30:i.R(s).f.a.a/8-30
 h=new A.cq(B.l,1,B.aD)
 b.push(A.dw(f,l,f,new A.eI(B.wt,f,new A.cN(h,h,h,h),f,f,f,B.aN),k,f,f,m))}return A.tE(b,B.a0,B.an,B.a4)},
-Go(a){var s,r,q,p,o,n,m,l=this,k="Black",j="White",i=null,h=l.tP()
-if(h.h(0,k)>h.h(0,j))s=l.x
-else{s=h.h(0,k)
-r=h.h(0,j)
-s=(s==null?r==null:s===r)?l.z:l.y}s=A.dw(i,A.hF(i,s,50,new A.Y_(),i),i,i,i,i,i,i)
-if(h.h(0,k)>h.h(0,j))r=(l.e===1?"You":"Bot")+" Won"
-else{r=h.h(0,k)
-q=h.h(0,j)
-if(r==null?q==null:r===q)r="Draw Game"
-else r=(l.e===2?"You":"Bot")+" Won"}if(h.h(0,k)>h.h(0,j))q=B.i
-else{q=h.h(0,k)
-p=h.h(0,j)
-q=(q==null?p==null:q===p)?B.pH:B.i}p=t.p
-q=A.tE(A.a([A.i9(r,A.e3(i,i,q,i,i,i,i,i,i,i,i,40,i,B.aa,i,i,!0,i,i,i,i,i,i,i,i),i,i)],p),B.a0,B.an,B.a4)
-r=A.e(h.h(0,l.e===1?k:j))+" : "
-r+=A.e(h.h(0,l.f===1?k:j))
-if(h.h(0,k)>h.h(0,j))o=B.i
-else{o=h.h(0,k)
-n=h.h(0,j)
-o=(o==null?n==null:o===n)?B.pH:B.i}o=A.i9(r,A.e3(i,i,o,i,i,i,i,i,i,i,i,40,i,B.aa,i,i,!0,i,i,i,i,i,i,i,i),i,i)
-r=B.eI.h(0,500)
-r.toString
-r=A.a3C(i,i,i,i,i,i,i,i,i,i,new A.aI(16,16,16,16),r,i,i,new A.cq(B.di,2,B.aD),i,i,i,i)
-r=A.dw(i,new A.cS(B.S,A.a7m(A.i9("Play again!",A.e3(i,i,B.i,i,i,i,i,i,i,i,i,26,i,i,i,i,!0,i,i,i,i,i,i,i,i),i,i),l.gXs(),r),i),i,i,i,new A.aI(0,0,0,20),i,i)
-n=B.eI.h(0,500)
-n.toString
-n=A.a3C(i,i,i,i,i,i,i,i,i,i,new A.aI(16,16,16,16),n,i,i,new A.cq(B.di,2,B.aD),i,i,i,i)
-n=A.mh(A.a([s,q,o,A.dw(i,A.tE(A.a([A.mh(A.a([r,A.dw(i,new A.cS(B.S,A.a7m(A.i9("Home",A.e3(i,i,B.i,i,i,i,i,i,i,i,i,26,i,i,i,i,!0,i,i,i,i,i,i,i,i),i,i),l.gVQ(),n),i),i,i,i,new A.aI(0,0,0,0),i,i)],p),B.a0,B.an,B.a4)],p),B.a0,B.an,B.a4),i,i,i,new A.aI(0,30,0,0),i,i)],p),B.a0,B.an,B.a4)
-p=A.a([],p)
-r=A.n6(a,!0).c
-r.toString
-m=A.ahW(a,r)
-A.n6(a,!0).mz(A.ahg(B.p,!0,i,new A.Y0(new A.lT(n,p,B.be,i)),a,i,m,!0,t.z))}}
+Go(a){var s,r,q,p,o,n,m,l,k=this,j="Black",i="White",h=null
+if(k.x)return
+s=k.tP()
+if(s.h(0,j)>s.h(0,i))r=k.y
+else{r=s.h(0,j)
+q=s.h(0,i)
+r=(r==null?q==null:r===q)?k.Q:k.z}r=A.dw(h,A.hF(h,r,50,new A.Y_(),h),h,h,h,h,h,h)
+if(s.h(0,j)>s.h(0,i))q=(k.e===1?"You":"Bot")+" Won"
+else{q=s.h(0,j)
+p=s.h(0,i)
+if(q==null?p==null:q===p)q="Draw Game"
+else q=(k.e===2?"You":"Bot")+" Won"}if(s.h(0,j)>s.h(0,i))p=B.i
+else{p=s.h(0,j)
+o=s.h(0,i)
+p=(p==null?o==null:p===o)?B.pH:B.i}o=t.p
+p=A.tE(A.a([A.i9(q,A.e3(h,h,p,h,h,h,h,h,h,h,h,40,h,B.aa,h,h,!0,h,h,h,h,h,h,h,h),h,h)],o),B.a0,B.an,B.a4)
+q=A.e(s.h(0,k.e===1?j:i))+" : "
+q+=A.e(s.h(0,k.f===1?j:i))
+if(s.h(0,j)>s.h(0,i))n=B.i
+else{n=s.h(0,j)
+m=s.h(0,i)
+n=(n==null?m==null:n===m)?B.pH:B.i}n=A.i9(q,A.e3(h,h,n,h,h,h,h,h,h,h,h,40,h,B.aa,h,h,!0,h,h,h,h,h,h,h,h),h,h)
+q=B.eI.h(0,500)
+q.toString
+q=A.a3C(h,h,h,h,h,h,h,h,h,h,new A.aI(16,16,16,16),q,h,h,new A.cq(B.di,2,B.aD),h,h,h,h)
+q=A.dw(h,new A.cS(B.S,A.a7m(A.i9("Play again!",A.e3(h,h,B.i,h,h,h,h,h,h,h,h,26,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),k.gXs(),q),h),h,h,h,new A.aI(0,0,0,20),h,h)
+m=B.eI.h(0,500)
+m.toString
+m=A.a3C(h,h,h,h,h,h,h,h,h,h,new A.aI(16,16,16,16),m,h,h,new A.cq(B.di,2,B.aD),h,h,h,h)
+m=A.mh(A.a([r,p,n,A.dw(h,A.tE(A.a([A.mh(A.a([q,A.dw(h,new A.cS(B.S,A.a7m(A.i9("Home",A.e3(h,h,B.i,h,h,h,h,h,h,h,h,26,h,h,h,h,!0,h,h,h,h,h,h,h,h),h,h),k.gVQ(),m),h),h,h,h,new A.aI(0,0,0,0),h,h)],o),B.a0,B.an,B.a4)],o),B.a0,B.an,B.a4),h,h,h,new A.aI(0,30,0,0),h,h)],o),B.a0,B.an,B.a4)
+o=A.a([],o)
+k.x=!0
+q=A.n6(a,!0).c
+q.toString
+l=A.ahW(a,q)
+A.n6(a,!0).mz(A.ahg(B.p,!0,h,new A.Y0(new A.lT(m,o,B.be,h)),a,h,l,!0,t.z))}}
 A.Y2.prototype={
 $0(){A.lZ().eD(0,"sounds/switch.wav",0.3).ax(0,new A.Y1(),t.P)},
 $S:5}
@@ -51368,7 +51372,7 @@ n=t.N
 m=t.yu
 l=A.v(n,m)
 k=new A.mY(-1,-1,-99999,l)
-for(j=s.cx,r=0;r<8;++r)for(p=0;p<8;++p)if(o[r][p]===s.f){s.v6(b3,r,p,s.r)
+for(j=s.cy,r=0;r<8;++r)for(p=0;p<8;++p)if(o[r][p]===s.f){s.v6(b3,r,p,s.r)
 i=A.v(n,m)
 h=new A.mY(r,p,0,i)
 l.m(0,""+r+","+p,h)

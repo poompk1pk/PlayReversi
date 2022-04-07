@@ -21,7 +21,7 @@ class _BoardGameState extends State<BoardGame> {
   int yourColor = -1;
   int enemyColor = -1;
   int whoTurn = 1;
-
+ bool isShowEnd = false;
   final blackImage = Image.asset('assets/images/Black.png');
   final whiteImage = Image.asset('assets/images/White.png');
   final drawImage = Image.asset('assets/images/Draw.png');
@@ -674,6 +674,9 @@ class _BoardGameState extends State<BoardGame> {
   }
 
   showEndDialog(BuildContext context) {
+    if(isShowEnd) {
+      return;
+    }
     Map<String, dynamic> check = checkGame();
 
     // set up the AlertDialog
@@ -790,7 +793,7 @@ class _BoardGameState extends State<BoardGame> {
 
       actions: [],
     );
-
+    isShowEnd = true;
     // show the dialog
     showDialog(
       context: context,
